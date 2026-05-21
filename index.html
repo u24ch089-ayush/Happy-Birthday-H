@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Hirvaa ❤️</title>
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ff758f;
+            --bg-color: #fff0f3;
+            --text-color: #590d22;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            text-align: center;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+
+        /* Floating Hearts Background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: var(--primary-color);
+            opacity: 0.6;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        /* Interactive Surprise Box */
+        .gift-container {
+            margin: 20px 0;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .gift-box {
+            font-size: 80px;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 10px 15px rgba(255, 77, 109, 0.4));
+        }
+
+        .letter-popup {
+            display: none;
+            max-width: 600px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            border-left: 5px solid var(--primary-color);
+            text-align: left;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Memory Gallery */
+        .gallery-section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-placeholder {
+            height: 200px;
+            background: #ffccd5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        /* Reasons Section */
+        .reasons-section {
+            background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-top: 40px;
+        }
+
+        .reason-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 10px;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Hero Header -->
+    <header>
+        <h1>Happy Birthday, Beautiful! 🎉🎂</h1>
+        <p class="subtitle">To the most amazing girl in the entire universe...</p>
+        
+        <!-- Surprise Box -->
+        <div class="gift-container" onclick="revealSurprise()">
+            <div class="gift-box" id="giftIcon">🎁</div>
+            <p style="margin-top: 10px; font-weight: bold;">Click the gift to open your letter!</p>
+        </div>
+
+        <!-- Hidden Letter -->
+        <div class="letter-popup" id="letterPopup">
+            <h3>My Favorite, ❤️</h3>
+            <br>
+            <p>Happy Birthday! Today is all about celebrating you—the incredible person you are, the joy you bring into my life, and all the beautiful memories we share.</p>
+            <br>
+            <p>Thank you for being my smile on hard days, my biggest supporter, and my favorite person to talk to. I hope this year brings you infinite happiness, success, and everything your heart desires.</p>
+            <br>
+            <p>Forever and always Yours.</p>
+        </div>
+    </header>
+
+    <!-- Memory Lane -->
+    <section class="gallery-section">
+        <h2 class="section-title">Our Favorite Moments 📸</h2>
+        <p style="margin-bottom: 30px;">(Pro-tip: Replace the emojis with links to your actual favorite photos together!)</p>
+        
+        <div class="gallery-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-img-placeholder">✨</div>
+                <div class="card-body">
+                    <h4 class="card-title">Where It All Began</h4>
+                    <p>A little reminder of one of our very first and favorite memories together.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-img-placeholder">🍕</div>
+                <div class="card-body">
+                    <h4 class="card-title">The Best Date Night</h4>
+                    <p>Nothing beats the late-night laughs, silly conversations, and food we shared.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-img-placeholder">🌅</div>
+                <div class="card-body">
+                    <h4 class="card-title">Everyday Magic</h4>
+                    <p>Because even the completely ordinary days are extraordinary just because you're in them.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Things I Love About You -->
+    <section class="reasons-section">
+        <h2 class="section-title" style="color: white;">A Few Things I Absolutely Love About You</h2>
+        <div>
+            <span class="reason-badge">Your beautiful smile ✨</span>
+            <span class="reason-badge">The way you laugh 😂</span>
+            <span class="reason-badge">Your golden heart 💛</span>
+            <span class="reason-badge">How smart and ambitious you are 🚀</span>
+            <span class="reason-badge">Your unmatched kindness 🌸</span>
+            <span class="reason-badge">Your terrible (but cute) jokes 🥺</span>
+        </div>
+    </section>
+
+    <script>
+        // Interactive Letter Reveal
+        function revealSurprise() {
+            const letter = document.getElementById('letterPopup');
+            const gift = document.getElementById('giftIcon');
+            
+            if(letter.style.display === 'block') {
+                letter.style.display = 'none';
+                gift.innerHTML = '🎁';
+            } else {
+                letter.style.display = 'block';
+                gift.innerHTML = '❤️';
+                letter.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Generate Floating Hearts
+        function createHeart() {
+            const container = document.getElementById('heartsContainer');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's'; // 3-6s
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px'; // 15-30px
+            
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
